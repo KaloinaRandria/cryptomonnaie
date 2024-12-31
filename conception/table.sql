@@ -11,7 +11,7 @@ CREATE TABLE utilisateur (
 -- Table crypto_monnaie
 CREATE TABLE crypto_monnaie (
     id SERIAL PRIMARY KEY,
-    disignation VARCHAR(100) NOT NULL,
+    designation VARCHAR(100) NOT NULL,
     symbol VARCHAR(10) UNIQUE NOT NULL,
     prix_unitaire NUMERIC(15, 2) NOT NULL
 );
