@@ -26,7 +26,7 @@ import lombok.Setter;
 public class CryptoMonnaie {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "s_crypto_monnaie")
-    @Column(name = "id")
+    @Column(name = "id_crypto_monnaie")
     private int id;
 
     @Column(name = "designation", nullable = false, length = 100)
