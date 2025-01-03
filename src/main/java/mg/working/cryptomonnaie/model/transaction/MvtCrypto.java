@@ -1,5 +1,6 @@
 package mg.working.cryptomonnaie.model.transaction;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -41,12 +42,12 @@ public class MvtCrypto {
     private CryptoMonnaie cryptoMonnaie;
 
     @Column(name = "variation", nullable = false, precision = 5, scale = 2)
-    private double variation;
+    private BigDecimal variation;
 
     @Column(name = "date_heure", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime dateHeure = LocalDateTime.now();
 
     public void setVariation(String variation) {
-        this.variation = Double.parseDouble(variation);
+        this.variation = BigDecimal.valueOf(Double.parseDouble(variation));
     }
 }
