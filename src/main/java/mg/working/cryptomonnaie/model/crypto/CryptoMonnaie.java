@@ -12,6 +12,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -36,10 +38,10 @@ public class CryptoMonnaie {
     private String symbol;
 
     @Column(name = "prix_unitaire", nullable = false, precision = 15, scale = 2)
-    private double prixUnitaire;
+    private BigDecimal prixUnitaire;
 
     public void setPrixUnitaire(String prixUnitaire) {
-        this.prixUnitaire = Double.parseDouble(prixUnitaire);
+        this.prixUnitaire = BigDecimal.valueOf(Double.parseDouble(prixUnitaire));
     }
 }
 

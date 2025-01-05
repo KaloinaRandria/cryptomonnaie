@@ -1,5 +1,6 @@
 package mg.working.cryptomonnaie.model.transaction;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.*;
@@ -32,10 +33,10 @@ public class TransactionCrypto {
     private CryptoMonnaie cryptoMonnaie;
 
     @Column(name = "quantite", nullable = false, precision = 15, scale = 6)
-    private double quantite;
+    private BigDecimal quantite;
 
     @Column(name = "prix_total", nullable = false, precision = 15, scale = 2)
-    private double prixTotal;
+    private BigDecimal prixTotal;
 
     @Column(name = "date_heure", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime dateHeure = LocalDateTime.now();
