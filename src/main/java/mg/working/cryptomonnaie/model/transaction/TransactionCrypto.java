@@ -54,5 +54,7 @@ public class TransactionCrypto {
         ACHAT,
         VENTE
     }
+
+
 }
 

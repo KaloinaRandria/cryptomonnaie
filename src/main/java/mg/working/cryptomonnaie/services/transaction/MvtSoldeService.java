@@ -6,6 +6,8 @@ import mg.working.cryptomonnaie.repository.transaction.MvtSoldeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -23,5 +25,15 @@ public class MvtSoldeService {
 
     public MvtSolde getMvtSoldeByUser(Utilisateur utilisateur) {
         return this.mvtSoldeRepository.findMvtSoldeByUser(utilisateur);
+    }
+
+    public void insertNewMvtSolde(Utilisateur utilisateur, BigDecimal valeurTotalVente , BigDecimal valeurSoldeActuel) {
+        MvtSolde mvtSolde = new MvtSolde();
+        mvtSolde.setUtilisateur(utilisateur);
+        mvtSolde.setDepot(valeurSoldeActuel);
+        mvtSolde.setSoldeRestant(valeurSoldeActuel);
+        mvtSolde.setDateHeure(LocalDateTime.now());
+
+        this.insertMvtSolde(mvtSolde);
     }
 }
