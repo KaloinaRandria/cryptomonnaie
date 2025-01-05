@@ -33,7 +33,7 @@ public class MvtSoldeService {
         mvtSolde.setDepot(valeurSoldeActuel);
         mvtSolde.setSoldeRestant(valeurSoldeActuel);
         mvtSolde.setDateHeure(LocalDateTime.now());
-        
+
         this.insertMvtSolde(mvtSolde);
     }
 }
