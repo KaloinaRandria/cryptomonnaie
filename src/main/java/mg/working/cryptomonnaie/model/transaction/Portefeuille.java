@@ -38,4 +38,6 @@ public class Portefeuille {
 
     @Column(name = "quantite", nullable = false, precision = 15, scale = 6)
     private BigDecimal quantite;
+
+
 }
