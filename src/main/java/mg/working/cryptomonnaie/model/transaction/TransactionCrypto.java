@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import mg.working.cryptomonnaie.model.crypto.CryptoMonnaie;
+import mg.working.cryptomonnaie.model.user.Utilisateur;
 
 @Getter
 @Setter
@@ -27,6 +28,10 @@ public class TransactionCrypto {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "s_transaction_crypto")
     @Column(name = "id")
     private int id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_utilisateur", nullable = false , referencedColumnName = "id_utilisateur")
+    private Utilisateur utilisateur;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_crypto_monnaie", nullable = false , referencedColumnName = "id_crypto_monnaie")
