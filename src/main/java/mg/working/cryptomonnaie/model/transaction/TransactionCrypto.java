@@ -1,5 +1,6 @@
 package mg.working.cryptomonnaie.model.transaction;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.*;
@@ -8,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import mg.working.cryptomonnaie.model.crypto.CryptoMonnaie;
+import mg.working.cryptomonnaie.model.user.Utilisateur;
 
 @Getter
 @Setter
@@ -28,14 +30,18 @@ public class TransactionCrypto {
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_utilisateur", nullable = false , referencedColumnName = "id_utilisateur")
+    private Utilisateur utilisateur;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_crypto_monnaie", nullable = false , referencedColumnName = "id_crypto_monnaie")
     private CryptoMonnaie cryptoMonnaie;
 
     @Column(name = "quantite", nullable = false, precision = 15, scale = 6)
-    private double quantite;
+    private BigDecimal quantite;
 
     @Column(name = "prix_total", nullable = false, precision = 15, scale = 2)
-    private double prixTotal;
+    private BigDecimal prixTotal;
 
     @Column(name = "date_heure", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime dateHeure = LocalDateTime.now();

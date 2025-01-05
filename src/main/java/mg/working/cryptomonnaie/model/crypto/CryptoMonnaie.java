@@ -12,6 +12,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -27,19 +29,48 @@ public class CryptoMonnaie {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "s_crypto_monnaie")
     @Column(name = "id_crypto_monnaie")
-    private int id;
+     int id;
 
     @Column(name = "designation", nullable = false, length = 100)
-    private String designation;
+     String designation;
 
     @Column(name = "symbol", nullable = false, unique = true, length = 10)
-    private String symbol;
+     String symbol;
 
     @Column(name = "prix_unitaire", nullable = false, precision = 15, scale = 2)
-    private double prixUnitaire;
+     BigDecimal prixUnitaire;
 
-    public void setPrixUnitaire(String prixUnitaire) {
-        this.prixUnitaire = Double.parseDouble(prixUnitaire);
+    public int getId() {
+        return id;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getDesignation() {
+        return designation;
+    }
+
+    public void setDesignation(String designation) {
+        this.designation = designation;
+    }
+
+    public String getSymbol() {
+        return symbol;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
+    }
+
+    public BigDecimal getPrixUnitaire() {
+        return prixUnitaire;
+    }
+
+    public void setPrixUnitaire(BigDecimal variation) {
+        this.prixUnitaire = prixUnitaire.add(prixUnitaire.multiply(variation).divide(BigDecimal.valueOf(100)));
+    }
+
 }
 
