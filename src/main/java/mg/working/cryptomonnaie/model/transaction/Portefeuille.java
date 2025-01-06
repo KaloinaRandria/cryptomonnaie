@@ -38,4 +38,30 @@ public class Portefeuille {
 
     @Column(name = "quantite", nullable = false, precision = 15, scale = 6)
     private BigDecimal quantite;
+
+    public BigDecimal getQuantite() {
+        return quantite;
+    }
+
+    // Setter pour la quantité
+    public void setQuantite(BigDecimal quantite) {
+        this.quantite = quantite;
+    }
+
+    // Ajoutez les autres getters et setters nécessaires
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+
+    public CryptoMonnaie getCryptoMonnaie() {
+        return cryptoMonnaie;
+    }
+
+    public void setCryptoMonnaie(CryptoMonnaie cryptoMonnaie) {
+        this.cryptoMonnaie = cryptoMonnaie;
+    }
 }
