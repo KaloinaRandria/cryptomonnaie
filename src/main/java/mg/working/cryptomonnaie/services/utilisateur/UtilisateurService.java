@@ -28,9 +28,4 @@ public class UtilisateurService {
     public Utilisateur getUtilisateurByEmailMdp(String email , String mdp) {
         return this.utilisateurRepository.findUserByEmailMdp(email, mdp);
     }
-
-    public void UpdateSoldeUtilisateur(Utilisateur utilisateur , String solde) {
-        utilisateur.setSolde(solde);
-        this.insertUtilisateur(utilisateur);
-    }
 }

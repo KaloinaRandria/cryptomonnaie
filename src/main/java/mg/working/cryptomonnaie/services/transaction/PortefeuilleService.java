@@ -22,7 +22,7 @@ public class PortefeuilleService {
         return this.portefeuilleRepository.findAll();
     }
 
-    public Portefeuille getPortefeuilleByUser(Utilisateur utilisateur) {
+    public List<Portefeuille> getPortefeuilleByUser(Utilisateur utilisateur) {
         return this.portefeuilleRepository.findByUser(utilisateur);
     }
 

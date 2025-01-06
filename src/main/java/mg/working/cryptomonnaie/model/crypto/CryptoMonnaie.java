@@ -72,8 +72,5 @@ public class CryptoMonnaie {
         this.prixUnitaire = prixUnitaire.add(prixUnitaire.multiply(variation).divide(BigDecimal.valueOf(100)));
     }
 
-    public BigDecimal calculTotalVente(BigDecimal quantiteAVendre) {
-        return this.prixUnitaire.multiply(quantiteAVendre);
-    }
 }
 

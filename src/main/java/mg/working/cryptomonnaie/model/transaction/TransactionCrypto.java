@@ -55,6 +55,60 @@ public class TransactionCrypto {
         VENTE
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+
+    public CryptoMonnaie getCryptoMonnaie() {
+        return cryptoMonnaie;
+    }
+
+    public void setCryptoMonnaie(CryptoMonnaie cryptoMonnaie) {
+        this.cryptoMonnaie = cryptoMonnaie;
+    }
+
+    public BigDecimal getQuantite() {
+        return quantite;
+    }
+
+    public void setQuantite(BigDecimal quantite) {
+        this.quantite = quantite;
+    }
+
+    public BigDecimal getPrixTotal() {
+        return prixTotal;
+    }
+
+    public void setPrixTotal(BigDecimal prixTotal) {
+        this.prixTotal = prixTotal;
+    }
+
+    public LocalDateTime getDateHeure() {
+        return dateHeure;
+    }
+
+    public void setDateHeure(LocalDateTime dateHeure) {
+        this.dateHeure = dateHeure;
+    }
+
+    public TypeTransaction getTypeTransaction() {
+        return typeTransaction;
+    }
+
+    public void setTypeTransaction(TypeTransaction typeTransaction) {
+        this.typeTransaction = typeTransaction;
+    }
 }
 
