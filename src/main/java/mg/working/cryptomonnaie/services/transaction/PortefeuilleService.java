@@ -23,8 +23,12 @@ public class PortefeuilleService {
         return this.portefeuilleRepository.findAll();
     }
 
-    public Portefeuille getPortefeuilleByUser(Utilisateur utilisateur) {
+    public List<Portefeuille> getPortefeuilleByUser(Utilisateur utilisateur) {
         return this.portefeuilleRepository.findByUser(utilisateur);
+    }
+
+    public Portefeuille getPortefeuilleByCrypto(CryptoMonnaie cryptoMonnaie) {
+        return this.portefeuilleRepository.findByCryptoMonnaie(cryptoMonnaie);
     }
 
     // Récupérer un portefeuille spécifique pour un utilisateur et une cryptomonnaie
@@ -50,8 +54,13 @@ public class PortefeuilleService {
         portefeuilleRepository.save(portefeuille);
     }
 
-    public void updateQuantiteCrypto(Portefeuille portefeuille ,BigDecimal quantiteAVendre) {
-        portefeuille.setQuantite(portefeuille.getQuantite().add(quantiteAVendre));
-        this.insertPortefeuille(portefeuille);
+    public void updateQuantiteCrypto(Portefeuille portefeuille ,BigDecimal quantiteAVendre) throws Exception {
+        if (portefeuille.getQuantite().compareTo(quantiteAVendre) >= 0) {
+            portefeuille.setQuantite(portefeuille.getQuantite().subtract(quantiteAVendre));
+            this.insertPortefeuille(portefeuille);
+        } else {
+            throw new Exception("Quantite insuffisante");
+        }
+
     }
 }
