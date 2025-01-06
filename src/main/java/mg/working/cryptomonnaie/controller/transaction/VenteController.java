@@ -36,7 +36,6 @@ public class VenteController {
     }
 
     @PostMapping("/venteCrypto")
-    @ResponseBody
     public String vendreCrypto(@RequestParam("userId") Integer userId,
                                @RequestParam("cryptoId") Integer cryptoId,
                                @RequestParam("quantite") BigDecimal quantite) {
@@ -51,7 +50,7 @@ public class VenteController {
 
         Portefeuille portefeuille = this.portefeuilleService.getPortefeuilleByCrypto(cryptoMonnaie);
         this.portefeuilleService.updateQuantiteCrypto(portefeuille , quantite);
-        
+
         this.transactionCryptoService.insertNewTransactionCrypto(cryptoMonnaie , quantite , valeurTotalVente);
 
         return "Vente valide";

@@ -44,7 +44,7 @@
 
 <%
     // Récupérer les données de cryptomonnaies
-    List<CryptoMonnaie> cryptoMonnaies = (List<CryptoMonnaie>) request.getAttribute("cryptos");
+    List<CryptoMonnaie> cryptoMonnaies = (List<CryptoMonnaie>) request.getAttribute("cryptoMonnaies");
     int utilisateurId = 1;
 %>
 
