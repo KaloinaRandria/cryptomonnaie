@@ -41,8 +41,4 @@ public class Utilisateur {
     public void setDtn(String dtn) {
         this.dtn = Date.valueOf(dtn);
     }
-
-    public double CalculNewSolde(double valeurTotalVente) {
-        return this.solde + valeurTotalVente;
-    }
 }
