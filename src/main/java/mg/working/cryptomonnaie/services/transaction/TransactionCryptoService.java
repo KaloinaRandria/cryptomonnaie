@@ -43,8 +43,9 @@ public class TransactionCryptoService {
         return soldeUtilisateur.compareTo(montantTotal) >= 0;
     }
 
-    public void insertNewTransactionCrypto(CryptoMonnaie cryptoMonnaie , BigDecimal quantiteAVendre , BigDecimal valeurTotalVente) {
+    public void insertNewTransactionCrypto(Utilisateur utilisateur,CryptoMonnaie cryptoMonnaie , BigDecimal quantiteAVendre , BigDecimal valeurTotalVente) {
         TransactionCrypto transactionCrypto = new TransactionCrypto();
+        transactionCrypto.setUtilisateur(utilisateur);
         transactionCrypto.setCryptoMonnaie(cryptoMonnaie);
         transactionCrypto.setQuantite(quantiteAVendre);
         transactionCrypto.setPrixTotal(valeurTotalVente);
