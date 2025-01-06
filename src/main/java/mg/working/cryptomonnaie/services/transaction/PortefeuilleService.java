@@ -49,4 +49,9 @@ public class PortefeuilleService {
 
         portefeuilleRepository.save(portefeuille);
     }
+
+    public void updateQuantiteCrypto(Portefeuille portefeuille ,BigDecimal quantiteAVendre) {
+        portefeuille.setQuantite(portefeuille.getQuantite().add(quantiteAVendre));
+        this.insertPortefeuille(portefeuille);
+    }
 }

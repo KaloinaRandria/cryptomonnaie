@@ -1,5 +1,6 @@
 package mg.working.cryptomonnaie.services.transaction;
 
+import mg.working.cryptomonnaie.model.crypto.CryptoMonnaie;
 import mg.working.cryptomonnaie.model.transaction.TransactionCrypto;
 import mg.working.cryptomonnaie.model.user.Utilisateur;
 import mg.working.cryptomonnaie.repository.transaction.TransactionCryptoRepository;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -39,5 +41,16 @@ public class TransactionCryptoService {
 
         // Comparer le solde de l'utilisateur avec le montant total
         return soldeUtilisateur.compareTo(montantTotal) >= 0;
+    }
+
+    public void insertNewTransactionCrypto(CryptoMonnaie cryptoMonnaie , BigDecimal quantiteAVendre , BigDecimal valeurTotalVente) {
+        TransactionCrypto transactionCrypto = new TransactionCrypto();
+        transactionCrypto.setCryptoMonnaie(cryptoMonnaie);
+        transactionCrypto.setQuantite(quantiteAVendre);
+        transactionCrypto.setPrixTotal(valeurTotalVente);
+        transactionCrypto.setDateHeure(LocalDateTime.now());
+        transactionCrypto.setTypeTransaction(TransactionCrypto.TypeTransaction.VENTE);
+
+        this.insertTransactionCrypto(transactionCrypto);
     }
 }

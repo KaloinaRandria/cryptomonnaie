@@ -64,4 +64,6 @@ public class Portefeuille {
     public void setCryptoMonnaie(CryptoMonnaie cryptoMonnaie) {
         this.cryptoMonnaie = cryptoMonnaie;
     }
+
+
 }

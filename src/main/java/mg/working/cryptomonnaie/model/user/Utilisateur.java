@@ -99,4 +99,8 @@ public class Utilisateur {
     public void setSolde(String solde) {
         this.solde = Double.parseDouble(solde);
     }
+
+    public double calculNewSolde(double valeurTotalVente) {
+        return this.solde + valeurTotalVente;
+    }
 }
