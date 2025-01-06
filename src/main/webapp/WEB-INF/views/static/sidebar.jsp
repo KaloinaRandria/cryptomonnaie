@@ -11,11 +11,12 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " href="index.html">
+            <a class="nav-link" href="/api/achat/achat">
                 <i class="bi bi-grid"></i>
                 <span>Achat</span>
             </a>
         </li>
+        
         <li class="nav-item">
             <a class="nav-link " href="index.html">
                 <i class="bi bi-grid"></i>

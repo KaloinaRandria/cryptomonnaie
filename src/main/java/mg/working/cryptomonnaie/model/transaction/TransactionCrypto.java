@@ -54,5 +54,67 @@ public class TransactionCrypto {
         ACHAT,
         VENTE
     }
-}
 
+    // Getter et Setter pour id
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    // Getter et Setter pour utilisateur
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+
+    // Getter et Setter pour cryptoMonnaie
+    public CryptoMonnaie getCryptoMonnaie() {
+        return cryptoMonnaie;
+    }
+
+    public void setCryptoMonnaie(CryptoMonnaie cryptoMonnaie) {
+        this.cryptoMonnaie = cryptoMonnaie;
+    }
+
+    // Getter et Setter pour quantite
+    public BigDecimal getQuantite() {
+        return quantite;
+    }
+
+    public void setQuantite(BigDecimal quantite) {
+        this.quantite = quantite;
+    }
+
+    // Getter et Setter pour prixTotal
+    public BigDecimal getPrixTotal() {
+        return prixTotal;
+    }
+
+    public void setPrixTotal(BigDecimal prixTotal) {
+        this.prixTotal = prixTotal;
+    }
+
+    // Getter et Setter pour dateHeure
+    public LocalDateTime getDateHeure() {
+        return dateHeure;
+    }
+
+    public void setDateHeure(LocalDateTime dateHeure) {
+        this.dateHeure = dateHeure;
+    }
+
+    // Getter et Setter pour typeTransaction
+    public TypeTransaction getTypeTransaction() {
+        return typeTransaction;
+    }
+
+    public void setTypeTransaction(TypeTransaction typeTransaction) {
+        this.typeTransaction = typeTransaction;
+    }
+}
