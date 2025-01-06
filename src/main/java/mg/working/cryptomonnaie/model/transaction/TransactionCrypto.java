@@ -1,5 +1,6 @@
 package mg.working.cryptomonnaie.model.transaction;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.*;
@@ -8,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import mg.working.cryptomonnaie.model.crypto.CryptoMonnaie;
+import mg.working.cryptomonnaie.model.user.Utilisateur;
 
 @Getter
 @Setter
@@ -28,14 +30,18 @@ public class TransactionCrypto {
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_utilisateur", nullable = false , referencedColumnName = "id_utilisateur")
+    private Utilisateur utilisateur;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_crypto_monnaie", nullable = false , referencedColumnName = "id_crypto_monnaie")
     private CryptoMonnaie cryptoMonnaie;
 
     @Column(name = "quantite", nullable = false, precision = 15, scale = 6)
-    private double quantite;
+    private BigDecimal quantite;
 
     @Column(name = "prix_total", nullable = false, precision = 15, scale = 2)
-    private double prixTotal;
+    private BigDecimal prixTotal;
 
     @Column(name = "date_heure", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime dateHeure = LocalDateTime.now();
@@ -48,5 +54,67 @@ public class TransactionCrypto {
         ACHAT,
         VENTE
     }
-}
 
+    // Getter et Setter pour id
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    // Getter et Setter pour utilisateur
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+
+    // Getter et Setter pour cryptoMonnaie
+    public CryptoMonnaie getCryptoMonnaie() {
+        return cryptoMonnaie;
+    }
+
+    public void setCryptoMonnaie(CryptoMonnaie cryptoMonnaie) {
+        this.cryptoMonnaie = cryptoMonnaie;
+    }
+
+    // Getter et Setter pour quantite
+    public BigDecimal getQuantite() {
+        return quantite;
+    }
+
+    public void setQuantite(BigDecimal quantite) {
+        this.quantite = quantite;
+    }
+
+    // Getter et Setter pour prixTotal
+    public BigDecimal getPrixTotal() {
+        return prixTotal;
+    }
+
+    public void setPrixTotal(BigDecimal prixTotal) {
+        this.prixTotal = prixTotal;
+    }
+
+    // Getter et Setter pour dateHeure
+    public LocalDateTime getDateHeure() {
+        return dateHeure;
+    }
+
+    public void setDateHeure(LocalDateTime dateHeure) {
+        this.dateHeure = dateHeure;
+    }
+
+    // Getter et Setter pour typeTransaction
+    public TypeTransaction getTypeTransaction() {
+        return typeTransaction;
+    }
+
+    public void setTypeTransaction(TypeTransaction typeTransaction) {
+        this.typeTransaction = typeTransaction;
+    }
+}

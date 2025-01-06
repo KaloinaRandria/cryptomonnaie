@@ -1,5 +1,6 @@
 package mg.working.cryptomonnaie.model.transaction;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -44,11 +45,11 @@ public class MvtSolde {
     private Utilisateur utilisateur;
 
     @Column(name = "depot", nullable = false, precision = 15, scale = 2)
-    private double depot = 0.00;
+    private BigDecimal depot = BigDecimal.valueOf(0.00);
 
     @Column(name = "retrait", nullable = false, precision = 15, scale = 2)
-    private double retrait = 0.00;
+    private BigDecimal retrait = BigDecimal.valueOf(0.00);
 
     @Column(name = "solde_restant", nullable = false, precision = 15, scale = 2)
-    private double soldeRestant;
+    private BigDecimal soldeRestant;
 }

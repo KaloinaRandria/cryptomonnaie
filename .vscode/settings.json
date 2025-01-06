@@ -1,5 +1,6 @@
 {
     "emmet.includeLanguages": {
     "jsp": "html"
-    }
+    },
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
