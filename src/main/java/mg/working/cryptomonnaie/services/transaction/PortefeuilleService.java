@@ -54,8 +54,13 @@ public class PortefeuilleService {
         portefeuilleRepository.save(portefeuille);
     }
 
-    public void updateQuantiteCrypto(Portefeuille portefeuille ,BigDecimal quantiteAVendre) {
-        portefeuille.setQuantite(portefeuille.getQuantite().subtract(quantiteAVendre));
-        this.insertPortefeuille(portefeuille);
+    public void updateQuantiteCrypto(Portefeuille portefeuille ,BigDecimal quantiteAVendre) throws Exception {
+        if (portefeuille.getQuantite().compareTo(quantiteAVendre) >= 0) {
+            portefeuille.setQuantite(portefeuille.getQuantite().subtract(quantiteAVendre));
+            this.insertPortefeuille(portefeuille);
+        } else {
+            throw new Exception("Quantite insuffisante");
+        }
+
     }
 }

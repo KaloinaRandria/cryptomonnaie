@@ -18,7 +18,7 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link " href="index.html">
+            <a class="nav-link " href="/api/vente/ventePage">
                 <i class="bi bi-grid"></i>
                 <span>Vente</span>
             </a>

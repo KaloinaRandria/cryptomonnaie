@@ -71,11 +71,11 @@
                     <div class="card-body">
                         <h5 class="card-title">Vendre une cryptomonnaie</h5>
 
-                        <form id="achatForm">
-                            <input type="hidden" id="userId" value="<%= utilisateurId %>">
+                        <form id="achatForm" method="post" action="/api/vente/venteCrypto" >
+                            <input type="hidden" id="userId" name="userId" value="<%= utilisateurId %>">
 
                             <label for="cryptoSelect">Sélectionnez une cryptomonnaie :</label>
-                            <select id="cryptoSelect">
+                            <select id="cryptoSelect" name="cryptoId">
                                 <% for (CryptoMonnaie crypto : cryptoMonnaies) { %>
                                 <option value="<%= crypto.getId() %>">
                                     <%= crypto.getDesignation() %> (<%= crypto.getSymbol() %>)
@@ -84,9 +84,9 @@
                             </select>
 
                             <label for="quantiteInput">Quantité :</label>
-                            <input type="number" id="quantiteInput" min="0.01" step="0.01" required>
+                            <input type="number" name="quantite" id="quantiteInput" min="0.01" step="0.01" required>
 
-                            <button type="button" id="submitVente">Vendre</button>
+                            <input type="submit" class="btn btn-primary" value="vendre">
                         </form>
 
                         <div id="resultMessage" class="mt-3"></div>
@@ -100,37 +100,6 @@
 
 <jsp:include page="../static/footer.jsp"/>
 
-<script>
-    $(document).ready(function () {
-        $("#submitVente").on("click", function () {
-            const userId = $("#userId").val();
-            const cryptoId = $("#cryptoSelect").val();
-            const quantite = $("#quantiteInput").val();
-
-            if (quantite > 0) {
-                $.ajax({
-                    url: "/api/achat/achat",
-                    type: "POST",
-                    data: {
-                        userId: userId,
-                        cryptoId: cryptoId,
-                        quantite: quantite
-                    },
-                    success: function (response) {
-                        $("#resultMessage").html('<div class="alert alert-success">' + response + '</div>');
-                    },
-                    error: function (xhr, status, error) {
-                        $("#resultMessage").html('<div class="alert alert-danger">Erreur : ' + xhr.responseText + '</div>');
-                    }
-                });
-            } else {
-                $("#resultMessage").html('<div class="alert alert-warning">Veuillez saisir une quantité valide.</div>');
-            }
-        });
-    });
-</script>
-
 </body>
-<jsp:include page="../static/footer.jsp"/>
 
 </html>
