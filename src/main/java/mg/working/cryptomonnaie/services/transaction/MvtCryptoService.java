@@ -43,8 +43,8 @@ public class MvtCryptoService {
         List<CryptoMonnaie> cryptos = cryptoMonnaieRepository.findAll();
 
         for (CryptoMonnaie crypto : cryptos) {
-            BigDecimal variation = BigDecimal.valueOf(-99)
-                    .add(BigDecimal.valueOf(198)
+            BigDecimal variation = BigDecimal.valueOf(-50)
+                    .add(BigDecimal.valueOf(100)
                             .multiply(BigDecimal.valueOf(random.nextDouble())));
             System.out.println(crypto.getPrixUnitaire());
             MvtCrypto mvtCrypto = new MvtCrypto();
