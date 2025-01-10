@@ -1,5 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="mg.working.cryptomonnaie.model.crypto.CryptoMonnaie" %>
+<%@ page import="mg.working.cryptomonnaie.model.transaction.Portefeuille" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,6 +44,7 @@
 </head>
 
 <%
+    List<Portefeuille> portefeuilleUser = (List<Portefeuille>) session.getAttribute("portefeuilleUser");
     // Récupérer les données de cryptomonnaies
     List<CryptoMonnaie> cryptoMonnaies = (List<CryptoMonnaie>) request.getAttribute("cryptos");
     int utilisateurId = 1;
@@ -95,7 +97,40 @@
             </div>
         </div>
     </section>
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
 
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Default Table</h5>
+
+                        <!-- Default Table -->
+                        <table class="table" id="cryptoTable">
+                            <thead>
+                            <tr>
+                                <th scope="col">Crypto</th>
+                                <th scope="col">Qantite</th>
+                                <th scope="col">Prix Unitaire</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <% for(Portefeuille portefeuille : portefeuilleUser) { %>
+                            <tr>
+                                <td><%=portefeuille.getCryptoMonnaie().getSymbol()%></td>
+                                <td><%=portefeuille.getQuantite()%></td>
+                                <td><%=portefeuille.getCryptoMonnaie().getPrixUnitaire()%></td>
+
+                            </tr>
+                            <% } %>
+                            </tbody>
+                        </table>
+                        <!-- End Default Table Example -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
 
 <jsp:include page="../static/footer.jsp"/>

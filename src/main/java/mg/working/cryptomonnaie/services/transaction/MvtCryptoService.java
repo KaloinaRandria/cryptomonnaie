@@ -32,7 +32,10 @@ public class MvtCryptoService {
     public List<MvtCrypto> getAllLastMvtCrypto() { return this.mvtCryptoRepository.getAllLastMvtCrypto(); }
 
     public List<MvtCrypto> get7LastMvtCryptoByCrypto(int id) { return mvtCryptoRepository.get7LastMvtCryptoByCrypto(id); }
-
+    public MvtCrypto getById(int id) { return this.mvtCryptoRepository.findById(id).orElse(null); }
+    public void deleteMvtCrypto(MvtCrypto mvtCrypto) {
+        this.mvtCryptoRepository.delete(mvtCrypto);
+    }
     private final Random random = new Random();
 
     @Scheduled(fixedRate = 10000) // Toutes les 10 secondes
@@ -40,8 +43,8 @@ public class MvtCryptoService {
         List<CryptoMonnaie> cryptos = cryptoMonnaieRepository.findAll();
 
         for (CryptoMonnaie crypto : cryptos) {
-            BigDecimal variation = BigDecimal.valueOf(-50)
-                    .add(BigDecimal.valueOf(150)
+            BigDecimal variation = BigDecimal.valueOf(-99)
+                    .add(BigDecimal.valueOf(198)
                             .multiply(BigDecimal.valueOf(random.nextDouble())));
             System.out.println(crypto.getPrixUnitaire());
             MvtCrypto mvtCrypto = new MvtCrypto();
@@ -54,7 +57,15 @@ public class MvtCryptoService {
             cryptoMonnaieRepository.save(crypto);
             mvtCryptoRepository.save(mvtCrypto);
 
+            List<MvtCrypto> mvtCryptos = this.get7LastMvtCryptoByCrypto(mvtCrypto.getId());
+            for (MvtCrypto mvtCrypto1 : mvtCryptos) {
+                if (mvtCrypto1.getId() - 70 > 0) {
+                    this.deleteMvtCrypto(this.getById(mvtCrypto1.getId() - 70));
+                }
+            }
         }
+
+
     }
 
 }

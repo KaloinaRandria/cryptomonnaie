@@ -1,7 +1,7 @@
+<%@ page import="org.springframework.aop.target.LazyInitTargetSource" %>
 <%@ page import="java.util.List" %>
-<%@ page import="mg.working.cryptomonnaie.model.crypto.CryptoMonnaie" %>
 <%@ page import="mg.working.cryptomonnaie.model.transaction.Portefeuille" %>
-<%@ page import="mg.working.cryptomonnaie.model.user.Utilisateur" %>
+<%@ page import="mg.working.cryptomonnaie.model.crypto.CryptoMonnaie" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Dashboard - NiceAdmin Bootstrap Template</title>
+    <title>Tables / General - NiceAdmin Bootstrap Template</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -35,70 +35,29 @@
 
     <!-- =======================================================
     * Template Name: NiceAdmin
-    * Updated: Nov 17 2023 with Bootstrap v5.3.2
+    * Updated: Aug 30 2023 with Bootstrap v5.3.1
     * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
     * Author: BootstrapMade.com
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
+<body>
+
+<jsp:include page="../static/header.jsp" />
+<jsp:include page="../static/sidebar.jsp" />
+<main id="main" class="main">
 <%
     List<Portefeuille> portefeuilleUser = (List<Portefeuille>) session.getAttribute("portefeuilleUser");
+
     // Récupérer les données de cryptomonnaies
     List<CryptoMonnaie> cryptoMonnaies = (List<CryptoMonnaie>) request.getAttribute("cryptoMonnaies");
-    Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
     int utilisateurId = 1;
 %>
-
-<body>
-<jsp:include page="../static/header.jsp"/>
-<jsp:include page="../static/sidebar.jsp"/>
-
-<main id="main" class="main">
-
     <div class="pagetitle">
-        <h1>Page de Vente</h1>
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.jsp">Accueil</a></li>
-                <li class="breadcrumb-item active">Vente</li>
-            </ol>
-        </nav>
-    </div>
+        <h1>Liste CryptoMonnaie de (Utilisateur)</h1>
 
-    <section class="section">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Vendre une cryptomonnaie</h5>
-
-                        <form id="achatForm" method="post" action="/api/vente/venteCrypto" >
-                            <input type="hidden" id="userId" name="userId" value="<%= utilisateurId %>">
-
-                            <label for="cryptoSelect">Sélectionnez une cryptomonnaie :</label>
-                            <select id="cryptoSelect" name="cryptoId">
-                                <% for (CryptoMonnaie crypto : cryptoMonnaies) { %>
-                                <option value="<%= crypto.getId() %>">
-                                    <%= crypto.getDesignation() %> (<%= crypto.getSymbol() %>)
-                                </option>
-                                <% } %>
-                            </select>
-
-                            <label for="quantiteInput">Quantité :</label>
-                            <input type="number" name="quantite" id="quantiteInput" min="0.01" step="0.01" required>
-
-                            <input type="submit" class="btn btn-primary" value="vendre">
-                        </form>
-
-                        <div class="mt-3">Votre Solde : <h1><%=utilisateur.getSolde()%></h1> </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div><!-- End Page Title -->
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
@@ -118,12 +77,12 @@
                             </thead>
                             <tbody>
                             <% for(Portefeuille portefeuille : portefeuilleUser) { %>
-                            <tr>
-                                <td><%=portefeuille.getCryptoMonnaie().getSymbol()%></td>
-                                <td><%=portefeuille.getQuantite()%></td>
-                                <td><%=portefeuille.getCryptoMonnaie().getPrixUnitaire()%></td>
+                                <tr>
+                                    <td><%=portefeuille.getCryptoMonnaie().getSymbol()%></td>
+                                    <td><%=portefeuille.getQuantite()%></td>
+                                    <td><%=portefeuille.getCryptoMonnaie().getPrixUnitaire()%></td>
 
-                            </tr>
+                                </tr>
                             <% } %>
                             </tbody>
                         </table>
@@ -133,11 +92,8 @@
             </div>
         </div>
     </section>
-
-</main>
-
+</main><!-- End #main -->
 <jsp:include page="../static/footer.jsp"/>
-
 </body>
 
 </html>

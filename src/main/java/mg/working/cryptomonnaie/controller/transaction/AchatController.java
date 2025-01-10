@@ -1,7 +1,9 @@
 package mg.working.cryptomonnaie.controller.transaction;
 
+import jakarta.servlet.http.HttpSession;
 import mg.working.cryptomonnaie.model.crypto.CryptoMonnaie;
 import mg.working.cryptomonnaie.model.transaction.PendingTransaction;
+import mg.working.cryptomonnaie.model.transaction.Portefeuille;
 import mg.working.cryptomonnaie.model.transaction.TransactionCrypto;
 import mg.working.cryptomonnaie.repository.transaction.PendingTransactionRepository;
 import mg.working.cryptomonnaie.repository.utilisateur.UtilisateurRepository;
@@ -51,10 +53,10 @@ public class AchatController {
      * Affiche la page d'achat.
      */
     @GetMapping("/achat")
-    public String afficherAchatPage(Model model) {
+    public String afficherAchatPage(Model model , HttpSession session) {
         // Récupérer la liste des cryptomonnaies depuis le service
         List<CryptoMonnaie> cryptoMonnaies = cryptoMonnaieService.getAllCrypto();
-        
+
         // Ajouter les cryptomonnaies au modèle
         model.addAttribute("cryptos", cryptoMonnaies);
 
