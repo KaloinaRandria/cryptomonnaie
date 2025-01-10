@@ -1,5 +1,6 @@
 package mg.working.cryptomonnaie.controller.transaction;
 
+import jakarta.servlet.http.HttpSession;
 import mg.working.cryptomonnaie.model.crypto.CryptoMonnaie;
 import mg.working.cryptomonnaie.model.transaction.Portefeuille;
 import mg.working.cryptomonnaie.model.user.Utilisateur;
@@ -31,8 +32,12 @@ public class VenteController {
     MvtSoldeService mvtSoldeService;
 
     @GetMapping("/ventePage")
-    public String goToVentePage(Model model) {
+    public String goToVentePage(Model model , HttpSession session) {
         List<CryptoMonnaie> cryptoMonnaies = this.cryptoMonnaieService.getAllCrypto();
+        Utilisateur utilisateur =this.utilisateurService.getUtilisateurById(1);
+        session.setAttribute("utilisateur", utilisateur);
+        List<Portefeuille> portefeuilleUser = this.portefeuilleService.getPortefeuilleByUser(utilisateur);
+        session.setAttribute("portefeuilleUser", portefeuilleUser);
 
         model.addAttribute("cryptoMonnaies", cryptoMonnaies);
         return "transaction/vente";
@@ -56,6 +61,6 @@ public class VenteController {
         this.mvtSoldeService.insertNewMvtSolde(utilisateur,valeurTotalVente, BigDecimal.valueOf(newSoldeUser));
         this.transactionCryptoService.insertNewTransactionCrypto(utilisateur,cryptoMonnaie , quantite , valeurTotalVente);
 
-        return "redirect:/ventePage";
+        return "redirect:/api/vente/ventePage";
     }
 }

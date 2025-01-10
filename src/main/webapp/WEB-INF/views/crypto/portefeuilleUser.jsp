@@ -1,3 +1,7 @@
+<%@ page import="org.springframework.aop.target.LazyInitTargetSource" %>
+<%@ page import="java.util.List" %>
+<%@ page import="mg.working.cryptomonnaie.model.transaction.Portefeuille" %>
+<%@ page import="mg.working.cryptomonnaie.model.crypto.CryptoMonnaie" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,46 +47,51 @@
 <jsp:include page="../static/header.jsp" />
 <jsp:include page="../static/sidebar.jsp" />
 <main id="main" class="main">
+<%
+    List<Portefeuille> portefeuilleUser = (List<Portefeuille>) session.getAttribute("portefeuilleUser");
 
+    // Récupérer les données de cryptomonnaies
+    List<CryptoMonnaie> cryptoMonnaies = (List<CryptoMonnaie>) request.getAttribute("cryptoMonnaies");
+    int utilisateurId = 1;
+%>
     <div class="pagetitle">
         <h1>Liste CryptoMonnaie de (Utilisateur)</h1>
 
     </div><!-- End Page Title -->
     <section class="section">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Tableau</h5>
+                        <h5 class="card-title">Default Table</h5>
 
                         <!-- Default Table -->
                         <table class="table" id="cryptoTable">
                             <thead>
                             <tr>
                                 <th scope="col">Crypto</th>
-                                <th scope="col">Symbole</th>
-                                <th scope="col">Quantite</th>
+                                <th scope="col">Qantite</th>
+                                <th scope="col">Prix Unitaire</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>Brandon Jacob</td>
-                                <td>Designer</td>
-                                <td>28</td>
-                            </tr>
+                            <% for(Portefeuille portefeuille : portefeuilleUser) { %>
+                                <tr>
+                                    <td><%=portefeuille.getCryptoMonnaie().getSymbol()%></td>
+                                    <td><%=portefeuille.getQuantite()%></td>
+                                    <td><%=portefeuille.getCryptoMonnaie().getPrixUnitaire()%></td>
+
+                                </tr>
+                            <% } %>
                             </tbody>
                         </table>
                         <!-- End Default Table Example -->
                     </div>
                 </div>
-
             </div>
-
-
         </div>
     </section>
-
 </main><!-- End #main -->
 <jsp:include page="../static/footer.jsp"/>
 </body>
