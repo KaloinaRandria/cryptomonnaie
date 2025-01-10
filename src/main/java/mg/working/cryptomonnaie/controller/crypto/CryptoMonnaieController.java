@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class CryptoMonnaieController {
     @Autowired
     CryptoMonnaieService cryptoMonnaieService;
-    @GetMapping("/")
+    @GetMapping("/graph")
     public String index (HttpServletRequest request){
         request.setAttribute("cryptos", cryptoMonnaieService.getAllCrypto());
         return "crypto/graphCrypto";

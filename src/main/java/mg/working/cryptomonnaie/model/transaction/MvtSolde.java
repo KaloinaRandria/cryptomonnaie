@@ -52,4 +52,52 @@ public class MvtSolde {
 
     @Column(name = "solde_restant", nullable = false, precision = 15, scale = 2)
     private BigDecimal soldeRestant;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getDateHeure() {
+        return dateHeure;
+    }
+
+    public void setDateHeure(LocalDateTime dateHeure) {
+        this.dateHeure = dateHeure;
+    }
+
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+
+    public BigDecimal getDepot() {
+        return depot;
+    }
+
+    public void setDepot(BigDecimal depot) {
+        this.depot = depot;
+    }
+
+    public BigDecimal getRetrait() {
+        return retrait;
+    }
+
+    public void setRetrait(BigDecimal retrait) {
+        this.retrait = retrait;
+    }
+
+    public BigDecimal getSoldeRestant() {
+        return soldeRestant;
+    }
+
+    public void setSoldeRestant(BigDecimal soldeRestant) {
+        this.soldeRestant = soldeRestant;
+    }
 }
