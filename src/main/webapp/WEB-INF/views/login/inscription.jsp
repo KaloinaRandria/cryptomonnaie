@@ -107,7 +107,7 @@
                                         <button class="btn btn-primary w-100" type="submit">Inscription</button>
                                     </div>
                                     <div class="col-12">
-                                        <p class="small mb-0">Don't have account? <a href="login.jsp">I have an account</a></p>
+                                        <p class="small mb-0">Don't have account? <a href="loginForm">I have an account</a></p>
                                     </div>
                                 </form>
 

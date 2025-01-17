@@ -22,7 +22,7 @@
                                     <p class="text-center small">Enter your username &amp; password to login</p>
                                 </div>
 
-                                <form class="row g-3 needs-validation" novalidate="" action="log" method="post">
+                                <form class="row g-3 needs-validation" novalidate="" action="login" method="post">
 
                                     <div class="col-12">
                                         <label for="mail" class="form-label">Mail</label>
@@ -49,7 +49,7 @@
                                         <button class="btn btn-primary w-100" type="submit">Login</button>
                                     </div>
                                     <div class="col-12">
-                                        <p class="small mb-0">Don't have account? <a href="inscription.jsp">Create an account</a></p>
+                                        <p class="small mb-0">Don't have account? <a href="/">Create an account</a></p>
                                     </div>
                                 </form>
 

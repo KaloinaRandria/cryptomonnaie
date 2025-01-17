@@ -13,6 +13,10 @@ public class UtilisateurService {
     @Autowired
     UtilisateurRepository utilisateurRepository;
 
+    public Utilisateur getUtilisateurByEmail(String email) {
+        return this.utilisateurRepository.findUserByEmail(email);
+    }
+
     public void insertUtilisateur(Utilisateur utilisateur) {
         this.utilisateurRepository.save(utilisateur);
     }
